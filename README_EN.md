@@ -50,11 +50,12 @@ processing. Please use the specified file when deploying.
 | REGION_WHITELIST_REGEX | ×        |         | (JP)                                           | Regular expression for region whitelist     |
 | REGION_BLACKLIST_REGEX | ×        |         | (JP)                                           | Regular expression for region blacklist     |
 | URL302                 | ×        |         | https://github.com/jonssonyan/cf-workers-proxy | 302 Redirect address                        |
+| KEEP_PATH              | ×        | false   | false                                          | Keep path for URL redirection                         |
 | DEBUG                  | ×        | false   | false                                          | Enable DEBUG                                |
 
 ## Mirror repository proxy
 
-1. Set the environment variable PROXY_HOSTNAME to the mirror repository address.
+1. Set the environment variable PROXY_HOSTNAME to the following image repository address.
 
 | Mirror repository | Address              |     
 |-------------------|----------------------|
@@ -82,13 +83,36 @@ processing. Please use the specified file when deploying.
    systemctl restart docker
    ```
 
+3. Search Mirror
+
+   ```bash
+   docker search dockerhub.xxx.com/image_name
+   ```
+
+   - dockerhub.xxx.com：your worker custom domain name
+   - image_name：image name
+
 ## Other
 
-you can contact me at YouTube: https://www.youtube.com/@jonssonyan
+Telegram Channel: https://t.me/jonssonyan_channel
+
+You can subscribe to my channel on YouTube: https://www.youtube.com/@jonssonyan
 
 If this project is helpful to you, you can buy me a cup of coffee.
 
 <img src="https://github.com/jonssonyan/install-script/assets/46235235/cce90c48-27d3-492c-af3e-468b656bdd06" width="150" alt="Wechat sponsor code" title="Wechat sponsor code"/>
+
+## Contributors
+
+Thanks to everyone who contributed to this project.
+
+<a href="https://github.com/jonssonyan/cf-workers-proxy/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jonssonyan/cf-workers-proxy" />
+</a>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=jonssonyan/cf-workers-proxy&type=Date)](https://star-history.com/#jonssonyan/cf-workers-proxy&Date)
 
 ## License
 

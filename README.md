@@ -47,11 +47,12 @@ Cloudflare Workers HTTP 反向代理
 | REGION_WHITELIST_REGEX | ×   |       | (JP)                                           | 地区白名单正则表达式          |
 | REGION_BLACKLIST_REGEX | ×   |       | (JP)                                           | 地区黑名单正则表达式          |
 | URL302                 | ×   |       | https://github.com/jonssonyan/cf-workers-proxy | 302 跳转地址            |
+| KEEP_PATH              | ×   | false | false                                          | 302 跳转时保留 path     |
 | DEBUG                  | ×   | false | false                                          | 开启调试                |
 
 ## 镜像仓库加速
 
-1. 将环境变量 PROXY_HOSTNAME 设置为以镜像仓库地址即可
+1. 将环境变量 PROXY_HOSTNAME 设置为以下镜像仓库地址即可
 
 | 镜像仓库       | 地址                   |     
 |------------|----------------------|
@@ -79,13 +80,36 @@ Cloudflare Workers HTTP 反向代理
    systemctl restart docker
    ```
 
+3. 查询镜像
+
+   ```bash
+   docker search dockerhub.xxx.com/image_name
+   ```
+
+   - dockerhub.xxx.com：你的 worker 自定义域名
+   - image_name：镜像名称
+
 ## 其他
 
-你可以在哔哩哔哩上关注我: https://space.bilibili.com/374864141
+Telegram Channel: https://t.me/jonssonyan_channel
+
+你可以在 YouTube 上订阅我的频道: https://www.youtube.com/@jonssonyan
 
 如果这个项目对你有帮助，你可以请我喝杯咖啡:
 
 <img src="https://github.com/jonssonyan/install-script/assets/46235235/cce90c48-27d3-492c-af3e-468b656bdd06" width="150" alt="微信赞赏码" title="微信赞赏码"/>
+
+## 贡献者
+
+在这里感谢所有为此项目做出贡献的人
+
+<a href="https://github.com/jonssonyan/cf-workers-proxy/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jonssonyan/cf-workers-proxy" />
+</a>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=jonssonyan/cf-workers-proxy&type=Date)](https://star-history.com/#jonssonyan/cf-workers-proxy&Date)
 
 ## 开源协议
 

@@ -23,6 +23,7 @@ function createNewRequest(request, url, proxyHostname, originHostname) {
     method: request.method,
     headers: newRequestHeaders,
     body: request.body,
+    redirect: 'follow'
   });
 }
 
@@ -126,12 +127,15 @@ export default {
         IP_BLACKLIST_REGEX,
         REGION_WHITELIST_REGEX,
         REGION_BLACKLIST_REGEX,
+        KEEP_PATH = false,
         DEBUG = false,
       } = env;
       const url = new URL(request.url);
       const originHostname = url.hostname;
       if (url.pathname.includes("/token")) {
         PROXY_HOSTNAME = "auth.docker.io";
+      } else if (url.pathname.includes("/search")) {
+        PROXY_HOSTNAME = "index.docker.io";
       }
       if (
         !PROXY_HOSTNAME ||
@@ -163,7 +167,11 @@ export default {
       ) {
         logError(request, "Invalid");
         return URL302
-          ? Response.redirect(URL302, 302)
+          ? Response.redirect(KEEP_PATH
+            ? (URL302 + "/" + url.pathname).replace(/\/+/g, '/')
+            : URL302,
+             302
+            )
           : new Response(await nginx(), {
               headers: {
                 "Content-Type": "text/html; charset=utf-8",
